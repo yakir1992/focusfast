@@ -22,7 +22,7 @@ const Hero = () => {
         </a>
 
         <h1 className="font-extrabold text-4xl lg:text-6xl tracking-tight md:-mb-4">
-          Unleash your focus, outperform everyone
+          Unleash your focus, outperform everyone!!!
         </h1>
         <p className="text-lg opacity-80 leading-relaxed">
           Stop letting distractions control your day. FocusFast combines cutting-edge AI with proven focus techniques to help you achieve deep work states faster. Built for professionals who value their time.
