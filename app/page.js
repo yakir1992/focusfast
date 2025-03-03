@@ -2,7 +2,9 @@ import { Suspense } from 'react'
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
-import FeaturesAccordion from "@/components/FeaturesAccordion";
+import HowItWorks from "@/components/HowItWorks";
+import FeaturesGrid from "@/components/FeaturesGrid";
+import SuccessStories from "@/components/SuccessStories";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -17,7 +19,9 @@ export default function Home() {
       <main>
         <Hero />
         <Problem />
-        <FeaturesAccordion />
+        <HowItWorks />
+        <FeaturesGrid />
+        <SuccessStories />
         <Pricing />
         <FAQ />
         <CTA />
