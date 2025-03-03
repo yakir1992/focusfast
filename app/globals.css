@@ -7,22 +7,20 @@ body {
   scroll-behavior: smooth !important;
 }
 
-/* It makes the HTML progress bar filling smooth when value change. */
+/* Progress bar animation */
 progress::-webkit-progress-value {
   transition: 0.6s width ease-out;
 }
 
-@layer utilities {
-  .bg-gradient {
-    background: linear-gradient(60deg, #ff9500, #ff7200);
-  }
+.btn {
+  @apply capitalize;
 }
 
-@layer base {
-  .btn-gradient {
-    @apply bg-gradient hover:saturate-[1.2] shadow duration-100 border-0 border-transparent text-white;
-  }
-  .btn {
-    @apply capitalize;
-  }
+.btn-gradient {
+  background: linear-gradient(60deg, #ff9500, #ff7200);
+  @apply hover:saturate-[1.2] shadow duration-100 border-0 border-transparent text-white;
+}
+
+.bg-gradient {
+  background: linear-gradient(60deg, #ff9500, #ff7200);
 }
