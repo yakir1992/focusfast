@@ -45,7 +45,7 @@ const StoryCard = ({ name, metric, result, quote }) => {
                     <span className="text-4xl font-bold text-primary">{metric}</span>
                     <span className="text-lg">{result}</span>
                 </div>
-                <p className="text-base-content/80 italic">"{quote}"</p>
+                <p className="text-base-content/80">&ldquo;{quote}&rdquo;</p>
                 <p className="font-medium">{name}</p>
             </div>
         </div>
