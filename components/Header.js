@@ -7,7 +7,6 @@ import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
 import logo from "@/app/icon.png";
 import config from "@/config";
-import ThemeToggle from './ThemeToggle';
 
 const links = [
   {
@@ -77,15 +76,13 @@ const Header = () => {
           ))}
         </div>
 
-        {/* CTA and Theme Toggle on large screens */}
-        <div className="hidden lg:flex lg:justify-end lg:flex-1 gap-4 items-center">
-          <ThemeToggle />
+        {/* CTA on large screens */}
+        <div className="hidden lg:flex lg:justify-end lg:flex-1">
           {cta}
         </div>
 
         {/* Burger button */}
         <div className="flex lg:hidden gap-4 items-center">
-          <ThemeToggle />
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
