@@ -1,15 +1,20 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./styles/globals.css",
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#ff9500", // Vibrant Orange
+        "primary-content": "#000000",
+        neutral: "#1c1917", // Deep Dark
+        "neutral-content": "#ffffff",
+      },
       backgroundImage: {
-        gradient:
-          "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       animation: {
         opacity: "opacity 0.25s ease-in-out",
@@ -59,11 +64,19 @@ module.exports = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    // Light & dark themes are added by default (it switches automatically based on OS settings)
-    // You can add another theme among the list of 30+
-    // Add "data-theme='theme_name" to any HTML tag to enable the 'theme_name' theme.
-    // https://daisyui.com/
-    themes: ["light", "dark"],
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          primary: "#ff9500",
+          "primary-content": "#000000",
+          neutral: "#1c1917",
+          "base-100": "#292524",
+          "base-200": "#1c1917",
+          "base-300": "#0c0a09",
+        },
+      },
+    ],
   },
   darkMode: 'class',
 };
