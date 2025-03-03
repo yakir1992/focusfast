@@ -6,6 +6,41 @@ import ButtonCheckout from "./ButtonCheckout";
 // <ButtonCheckout /> renders a button that will redirect the user to Stripe checkout called the /api/stripe/create-checkout API endpoint with the correct priceId
 
 const Pricing = () => {
+  const plans = [
+    {
+      name: "Personal Focus",
+      price: "$9",
+      features: [
+        "Unlimited focus sessions",
+        "Basic focus analytics",
+        "Email support",
+        "1 device"
+      ]
+    },
+    {
+      name: "Pro Focus",
+      price: "$29",
+      features: [
+        "Everything in Personal +",
+        "AI focus assistant",
+        "Advanced analytics",
+        "Priority support",
+        "3 devices"
+      ]
+    },
+    {
+      name: "Team Focus",
+      price: "$99",
+      features: [
+        "Everything in Pro +",
+        "Team focus coordination",
+        "Admin dashboard",
+        "API access",
+        "Unlimited devices"
+      ]
+    }
+  ];
+
   return (
     <section className="bg-base-200 overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-5xl mx-auto">
@@ -17,8 +52,8 @@ const Pricing = () => {
         </div>
 
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
-          {config.stripe.plans.map((plan) => (
-            <div key={plan.priceId} className="relative w-full max-w-lg">
+          {plans.map((plan) => (
+            <div key={plan.name} className="relative w-full max-w-lg">
               {plan.isFeatured && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                   <span

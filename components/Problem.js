@@ -30,6 +30,21 @@ const Step = ({ emoji, text }) => {
   );
 };
 
+const stats = [
+  {
+    number: "23%",
+    label: "of work time lost to distractions"
+  },
+  {
+    number: "45min",
+    label: "average time to refocus after interruption"
+  },
+  {
+    number: "$10,000+",
+    label: "cost of lost productivity per employee/year"
+  }
+];
+
 // Problem Agitation: A crucial, yet overlooked, component for a landing page that sells.
 // It goes under your Hero section, and above your Features section.
 // Your Hero section makes a promise to the customer: "Our product will help you achieve XYZ".

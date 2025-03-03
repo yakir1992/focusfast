@@ -3,6 +3,21 @@ import React from "react";
 
 const features = [
   {
+    title: "AI Focus Assistant",
+    description: "Our AI analyzes your work patterns and automatically blocks distracting websites and notifications during focus sessions.",
+    styles: "bg-primary text-primary-content"
+  },
+  {
+    title: "Focus Analytics",
+    description: "Track your daily focus scores, productivity trends, and get personalized recommendations to improve.",
+    styles: "bg-secondary text-secondary-content"
+  },
+  {
+    title: "Team Focus",
+    description: "Coordinate focus sessions with your team, set shared goals, and celebrate productivity wins together.",
+    styles: "bg-accent text-accent-content"
+  },
+  {
     title: "Collect user feedback",
     description:
       "Use your Insighto's board to let users submit features they want.",
