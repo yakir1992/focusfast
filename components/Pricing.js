@@ -42,7 +42,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section className="bg-neutral-900 py-24">
+    <section className="bg-neutral-900 py-24" id="pricing">
       <div className="max-w-7xl mx-auto px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold text-white mb-8">
