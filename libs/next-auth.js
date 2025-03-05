@@ -12,9 +12,8 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  adapter: MongoDBAdapter(connectMongo(), {
-    databaseName: "focusfast",
-  }),
+  // Temporarily comment out the adapter to test if authentication works
+  // adapter: MongoDBAdapter(connectMongo()),
   callbacks: {
     session: async ({ session, user }) => {
       if (session?.user) {
