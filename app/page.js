@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Suspense } from 'react'
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -15,14 +17,28 @@ export default function Home() {
     <>
       <Header />
       <main>
-        <Hero />
-        <Problem />
-        <HowItWorks />
-        <FeaturesGrid />
+        <Suspense fallback={<div>Loading hero section...</div>}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<div>Loading problem section...</div>}>
+          <Problem />
+        </Suspense>
+        <Suspense fallback={<div>Loading how it works section...</div>}>
+          <HowItWorks />
+        </Suspense>
+        <Suspense fallback={<div>Loading features section...</div>}>
+          <FeaturesGrid />
+        </Suspense>
         {/* <Testimonials11 /> */}
-        <Pricing />
-        <FAQ />
-        <CTA />
+        <Suspense fallback={<div>Loading pricing section...</div>}>
+          <Pricing />
+        </Suspense>
+        <Suspense fallback={<div>Loading FAQ section...</div>}>
+          <FAQ />
+        </Suspense>
+        <Suspense fallback={<div>Loading CTA section...</div>}>
+          <CTA />
+        </Suspense>
       </main>
       <Footer />
     </>
