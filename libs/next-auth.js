@@ -4,37 +4,23 @@ import connectMongo from "./mongoose";
 import NextAuth from "next-auth";
 
 export const authOptions = {
-  debug: true,
-  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  // Temporarily comment out the adapter to test basic authentication
-  // adapter: MongoDBAdapter(connectMongo(), {
-  //   databaseName: "focusfast",
-  // }),
+  adapter: MongoDBAdapter(connectMongo()),
   callbacks: {
-    session: async ({ session, token, user }) => {
+    session: async ({ session, user }) => {
       if (session?.user) {
-        // When using JWT strategy, user comes from token
-        // When using database strategy, user comes from the adapter
-        session.user.id = token?.sub || user?.id;
+        session.user.id = user.id;
       }
       return session;
     },
-    jwt: async ({ token, user }) => {
-      if (user) {
-        token.id = user.id;
-      }
-      return token;
-    }
   },
-  // Change to JWT strategy temporarily to bypass database issues
   session: {
-    strategy: "jwt",
+    strategy: "database",
     maxAge: 30 * 24 * 60 * 60,
   },
 };
