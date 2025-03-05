@@ -12,18 +12,29 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  // Temporarily comment out the adapter to test if authentication works
-  // adapter: MongoDBAdapter(connectMongo()),
+  // Temporarily comment out the adapter to test basic authentication
+  // adapter: MongoDBAdapter(connectMongo(), {
+  //   databaseName: "focusfast",
+  // }),
   callbacks: {
-    session: async ({ session, user }) => {
+    session: async ({ session, token, user }) => {
       if (session?.user) {
-        session.user.id = user.id;
+        // When using JWT strategy, user comes from token
+        // When using database strategy, user comes from the adapter
+        session.user.id = token?.sub || user?.id;
       }
       return session;
     },
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    }
   },
+  // Change to JWT strategy temporarily to bypass database issues
   session: {
-    strategy: "database",
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60,
   },
 };

@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
       lowercase: true,
-      private: true,
       required: true,
       unique: true,
     },

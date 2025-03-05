@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 export default async function Dashboard() {
   try {
-    // Test MongoDB connection
+    // Connect to MongoDB
     await connectMongo();
     console.log("MongoDB connected successfully");
 
@@ -19,7 +19,7 @@ export default async function Dashboard() {
 
     console.log("Session user ID:", session.user.id);
 
-    // Add this to check if user ID is valid
+    // Validate user ID
     if (!mongoose.Types.ObjectId.isValid(session.user.id)) {
       console.error("Invalid MongoDB ObjectId:", session.user.id);
       return <p>Invalid user ID format</p>;
