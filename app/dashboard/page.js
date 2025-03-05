@@ -3,21 +3,28 @@ import { authOptions } from "@/libs/next-auth";
 import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
 import mongoose from "mongoose";
+import DashboardClient from "@/components/dashboard/DashboardClient";
 
 export default async function Dashboard() {
   try {
     // Connect to MongoDB
     await connectMongo();
-    console.log("MongoDB connected successfully");
 
     const session = await getServerSession(authOptions);
-    console.log("Raw session:", JSON.stringify(session, null, 2));
 
     if (!session || !session.user) {
-      return <p>You are not logged in.</p>;
+      return (
+        <div className="flex items-center justify-center min-h-screen bg-gray-900">
+          <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full">
+            <h1 className="text-2xl font-bold text-white mb-4">Access Denied</h1>
+            <p className="text-gray-300 mb-6">You must be signed in to view this page.</p>
+            <a href="/" className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center">
+              Back to Home
+            </a>
+          </div>
+        </div>
+      );
     }
-
-    console.log("Session user ID:", session.user.id);
 
     // Validate user ID
     if (!mongoose.Types.ObjectId.isValid(session.user.id)) {
@@ -26,25 +33,14 @@ export default async function Dashboard() {
     }
 
     const user = await User.findById(session.user.id);
-    console.log("User from database:", user ? JSON.stringify(user, null, 2) : "Not found");
 
     if (!user) {
       return <p>User not found. ID: {session.user.id}</p>;
     }
 
-    return (
-      <>
-        <main className="min-h-screen p-8 pb-24">
-          <section className="max-w-xl mx-auto space-y-8">
-            <h1 className="text-3xl md:text-4xl font-extrabold">
-              User Dashboard
-            </h1>
-            <p>Welcome {user.name} 👋</p>
-            <p>Your email is {user.email}</p>
-          </section>
-        </main>
-      </>
-    );
+    // Pass user data to the client component
+    return <DashboardClient user={JSON.parse(JSON.stringify(user))} />;
+
   } catch (error) {
     console.error("Dashboard error:", error);
     return <p>Error: {error.message}</p>;

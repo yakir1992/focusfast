@@ -1,7 +1,16 @@
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import connectMongo from "./mongoose";
+import { MongoClient } from "mongodb";
 import NextAuth from "next-auth";
+
+// Create a proper MongoDB client for the adapter
+const clientPromise = (async () => {
+  const client = new MongoClient(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+  return client.connect();
+})();
 
 export const authOptions = {
   providers: [
@@ -10,7 +19,7 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-  adapter: MongoDBAdapter(connectMongo()),
+  adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     session: async ({ session, user }) => {
       if (session?.user) {
