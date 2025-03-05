@@ -6,7 +6,19 @@ import User from "@/models/User";
 export default async function Dashboard() {
   await connectMongo();
   const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return <p>You are not logged in.</p>;
+  }
+
   const user = await User.findById(session.user.id);
+
+  if (!user) {
+    return <p>User not found.</p>;
+  }
+
+  console.log("Session:", session);
+  console.log("User ID:", session?.user?.id);
 
   return (
     <>
