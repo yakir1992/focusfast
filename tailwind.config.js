@@ -76,6 +76,9 @@ module.exports = {
           "100%": { backgroundPosition: "0% 50%" },
         },
       },
+      boxShadow: {
+        'custom': '0 4px 15px rgba(0, 0, 0, 0.3)', // Example custom shadow
+      },
     },
   },
   plugins: [require("daisyui")],

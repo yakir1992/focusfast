@@ -47,7 +47,7 @@ const Header = () => {
           <Link
             className="flex items-center gap-2 shrink-0"
             href="/"
-            title={`${config.appName} hompage`}
+            title={`${config.appName} homepage`}
           >
             <Image
               src={logo}
@@ -68,7 +68,7 @@ const Header = () => {
             <Link
               href={link.href}
               key={link.href}
-              className="link link-hover"
+              className="text-base-content no-underline hover:bg-orange-500 hover:text-white transition-all duration-300 px-3 py-2 rounded-md"
               title={link.label}
             >
               {link.label}
@@ -116,7 +116,7 @@ const Header = () => {
           <div className="flex items-center justify-between">
             <Link
               className="flex items-center gap-2 shrink-0 "
-              title={`${config.appName} hompage`}
+              title={`${config.appName} homepage`}
               href="/"
             >
               <Image
@@ -161,7 +161,7 @@ const Header = () => {
                   <Link
                     href={link.href}
                     key={link.href}
-                    className="link link-hover"
+                    className="link link-hover no-underline hover:bg-orange-500 hover:text-white transition-all duration-300 px-3 py-2 rounded-md"
                     title={link.label}
                   >
                     {link.label}
