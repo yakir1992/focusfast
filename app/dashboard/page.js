@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/libs/next-auth";
 import connectMongo from "@/libs/mongoose";
 import User from "@/models/User";
+import mongoose from "mongoose";
 
 export default async function Dashboard() {
   try {
@@ -10,18 +11,25 @@ export default async function Dashboard() {
     console.log("MongoDB connected successfully");
 
     const session = await getServerSession(authOptions);
+    console.log("Raw session:", JSON.stringify(session, null, 2));
 
     if (!session || !session.user) {
       return <p>You are not logged in.</p>;
     }
 
-    console.log("Session user:", session.user);
+    console.log("Session user ID:", session.user.id);
+
+    // Add this to check if user ID is valid
+    if (!mongoose.Types.ObjectId.isValid(session.user.id)) {
+      console.error("Invalid MongoDB ObjectId:", session.user.id);
+      return <p>Invalid user ID format</p>;
+    }
 
     const user = await User.findById(session.user.id);
+    console.log("User from database:", user ? JSON.stringify(user, null, 2) : "Not found");
 
     if (!user) {
-      console.log("User not found for ID:", session.user.id);
-      return <p>User not found.</p>;
+      return <p>User not found. ID: {session.user.id}</p>;
     }
 
     return (

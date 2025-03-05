@@ -2,11 +2,12 @@ import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import config from "@/config";
-import connectMongo from "./mongo";
+import connectMongo from "./mongoose";
 import NextAuth from "next-auth";
 
 
 export const authOptions = {
+  debug: true,
   // Set any random key in .env.local
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -54,7 +55,8 @@ export const authOptions = {
     },
   },
   session: {
-    strategy: "jwt",
+    strategy: "database",
+    maxAge: 30 * 24 * 60 * 60,
   },
   theme: {
     brandColor: config.colors.main,
