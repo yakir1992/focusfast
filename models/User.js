@@ -13,6 +13,8 @@ const userSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       private: true,
+      required: true,
+      unique: true,
     },
     image: {
       type: String,
@@ -36,6 +38,11 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    emailVerified: Date,
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     timestamps: true,
@@ -46,4 +53,7 @@ const userSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+// Prevent model overwrite error when hot-reloading in development
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+export default User;
