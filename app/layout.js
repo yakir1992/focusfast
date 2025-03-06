@@ -1,12 +1,15 @@
-import { Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import PlausibleProvider from "next-plausible";
 import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
-import Providers from "@/components/Providers";
 import config from "@/config";
 import "./globals.css";
 
-const font = Inter({ subsets: ["latin"] });
+const font = Playfair_Display({
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-playfair'
+});
 
 export const viewport = {
   themeColor: config.colors.main,
@@ -14,20 +17,21 @@ export const viewport = {
   initialScale: 1,
 };
 
-export const metadata = getSEOTags();
+export const metadata = {
+  title: "FocusFast - Achieve Deep Focus",
+  description: "Drop into flow state on demand with FocusFast. No more wasted hours trying to concentrate.",
+};
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="dark" className={`dark ${font.className}`}>
+    <html lang="en" className={font.className}>
       <head>
         {config.domainName && (
           <PlausibleProvider domain={config.domainName} />
         )}
       </head>
-      <body>
-        <Providers>
-          <ClientLayout>{children}</ClientLayout>
-        </Providers>
+      <body className="bg-neutral-900 text-white">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

@@ -71,7 +71,7 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              <button className="btn btn-primary w-full mt-8">
+              <button className="btn-get-started w-full mt-8">
                 Get Started
               </button>
             </div>

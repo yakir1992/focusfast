@@ -38,9 +38,8 @@ export default async function Dashboard() {
       return <p>User not found. ID: {session.user.id}</p>;
     }
 
-    // Pass user data to the client component
+    // No longer need to wrap in DashboardProviders as that's done in layout.js
     return <DashboardClient user={JSON.parse(JSON.stringify(user))} />;
-
   } catch (error) {
     console.error("Dashboard error:", error);
     return <p>Error: {error.message}</p>;

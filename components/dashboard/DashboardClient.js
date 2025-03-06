@@ -8,9 +8,13 @@ import OverviewPanel from "./panels/OverviewPanel";
 import BillingPanel from "./panels/BillingPanel";
 import SettingsPanel from "./panels/SettingsPanel";
 import ProfilePanel from "./panels/ProfilePanel";
+import FocusPanel from "./panels/FocusPanel";
+import AnalyticsPanel from "./panels/AnalyticsPanel";
 
 const PANELS = {
     overview: OverviewPanel,
+    focus: FocusPanel,
+    analytics: AnalyticsPanel,
     billing: BillingPanel,
     settings: SettingsPanel,
     profile: ProfilePanel,
@@ -26,7 +30,7 @@ export default function DashboardClient({ user }) {
     const ActivePanel = PANELS[activePanel];
 
     return (
-        <div className="flex min-h-screen bg-neutral-900 text-white">
+        <div id="dashboard-container" className="flex min-h-screen bg-neutral-900 text-white">
             <DashboardSidebar
                 activePanel={activePanel}
                 setActivePanel={setActivePanel}
