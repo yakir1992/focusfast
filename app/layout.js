@@ -24,10 +24,10 @@ export const metadata = {
   description: "Drop into flow state on demand with FocusFast. No more wasted hours trying to concentrate.",
   icons: {
     icon: [
-      { url: '/favicon.ico?v=2', sizes: 'any' }, // Added version parameter
-      { url: '/icon.png?v=2', type: 'image/png' }
+      { url: '/favicon_new.ico', sizes: 'any' }, // Added version parameter
+      { url: '/icon.png', type: 'image/png' }
     ],
-    apple: { url: '/apple-touch-icon.png?v=2', type: 'image/png' }
+    apple: { url: '/apple-touch-icon.png', type: 'image/png' }
   }
 };
 
