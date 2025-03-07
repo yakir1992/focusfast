@@ -29,7 +29,10 @@ export default function RootLayout({ children }) {
         {config.domainName && (
           <PlausibleProvider domain={config.domainName} />
         )}
-        <link rel="icon" href="/public/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="bg-neutral-900 text-white">
         <ClientLayout>{children}</ClientLayout>
