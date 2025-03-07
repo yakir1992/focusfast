@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         {config.domainName && (
           <PlausibleProvider domain={config.domainName} />
         )}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/public/favicon.ico" />
       </head>
       <body className="bg-neutral-900 text-white">
         <ClientLayout>{children}</ClientLayout>
