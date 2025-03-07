@@ -4,6 +4,7 @@ import { getSEOTags } from "@/libs/seo";
 import ClientLayout from "@/components/LayoutClient";
 import config from "@/config";
 import "./globals.css";
+import logo from "@/app/icon.png"
 
 const font = Playfair_Display({
   subsets: ["latin"],
@@ -12,6 +13,7 @@ const font = Playfair_Display({
 });
 
 export const viewport = {
+
   themeColor: config.colors.main,
   width: "device-width",
   initialScale: 1,
@@ -20,6 +22,13 @@ export const viewport = {
 export const metadata = {
   title: "FocusFast | Achieve Deep Focus in minutes, not hours",
   description: "Drop into flow state on demand with FocusFast. No more wasted hours trying to concentrate.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' }
+    ],
+    apple: { url: '/apple-touch-icon.png', type: 'image/png' }
+  }
 };
 
 export default function RootLayout({ children }) {
