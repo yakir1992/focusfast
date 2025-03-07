@@ -18,7 +18,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "FocusFast - Achieve Deep Focus",
+  title: "FocusFast | Achieve Deep Focus in minutes, not hours",
   description: "Drop into flow state on demand with FocusFast. No more wasted hours trying to concentrate.",
 };
 
