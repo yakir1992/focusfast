@@ -6,7 +6,6 @@ const DashboardThemeContext = createContext({
     theme: "system",
     setTheme: () => null,
 });
-
 export function DashboardThemeProvider({ children }) {
     const [theme, setTheme] = useState("system");
     const [mounted, setMounted] = useState(false);
