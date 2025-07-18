@@ -24,43 +24,60 @@ const Stat = ({ number, label }) => {
   return (
     <div className="flex flex-col items-center gap-2">
       <span className="text-4xl md:text-5xl font-bold text-primary">{number}</span>
-      <span className="text-sm md:text-base opacity-90 max-w-[200px]">{label}</span>
+      <span className="text-sm md:text-base opacity-90 max-w-[200px] text-center">{label}</span>
     </div>
   );
 };
 
-// Problem Agitation: A crucial, yet overlooked, component for a landing page that sells.
-// It goes under your Hero section, and above your Features section.
-// Your Hero section makes a promise to the customer: "Our product will help you achieve XYZ".
-// Your Problem section explains what happens to the customer if its problem isn't solved.
-// The copy should NEVER mention your product. Instead, it should dig the emotional outcome of not fixing a problem.
-// For instance:
-// - Hero: "ShipFast helps developers launch startups fast"
-// - Problem Agitation: "Developers spend too much time adding features, get overwhelmed, and quit." (not about ShipFast at all)
-// - Features: "ShipFast has user auth, Stripe, emails all set up for you"
 const Problem = () => {
   return (
     <section className="bg-neutral text-neutral-content">
       <div className="max-w-7xl mx-auto px-8 py-16 md:py-32 text-center">
         <h2 className="max-w-3xl mx-auto font-extrabold text-4xl md:text-5xl tracking-tight mb-6 md:mb-8">
-          The Hidden Cost of Distraction in Today&apos;s Workplace
+          The Modern Brain Under Siege
         </h2>
         <p className="max-w-xl mx-auto text-lg opacity-90 leading-relaxed mb-12 md:mb-20">
-          Modern professionals lose more than just time to distractions - they lose momentum, creativity, and career growth opportunities.
+          Your brain is fighting a losing battle against an environment engineered to fragment your attention. The cognitive cost is higher than you realize.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <Stat number="23%" label="of work time lost to distractions" />
-          <Stat number="45min" label="average time to refocus after interruption" />
-          <Stat number="$10,000+" label="cost of lost productivity per employee/year" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+          <Stat number="4 min" label="average focus duration before interruption in modern workplace" />
+          <Stat number="23.6%" label="productivity loss from mental context switching" />
+          <Stat number="67 min" label="daily time required to return to deep focus after distractions" />
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 mt-16">
-          <Step emoji="📱" text="Constant notifications" />
+        <h3 className="text-2xl font-bold mb-8">The Distraction Spiral</h3>
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-start gap-6 mb-16">
+          <Step emoji="📱" text="Notification overload" />
           <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
-          <Step emoji="😫" text="Mental exhaustion" />
+          <Step emoji="🧠" text="Cognitive fragmentation" />
+          <Arrow extraStyle="max-md:-scale-x-100 md:-rotate-90" />
+          <Step emoji="⏱️" text="Attention deficit" />
           <Arrow extraStyle="md:-scale-x-100 md:-rotate-90" />
-          <Step emoji="📉" text="Decreased performance" />
+          <Step emoji="📉" text="Diminished performance" />
+        </div>
+
+        <div className="p-6 bg-neutral-800 rounded-xl max-w-2xl mx-auto">
+          <h3 className="text-xl font-bold mb-4">Your Brain on Modern Work</h3>
+          <p className="text-base opacity-90 mb-4">
+            Each day, your focused attention is fractured into ever-smaller segments. This isn't just annoying—it fundamentally alters your brain's ability to perform deep work.
+          </p>
+          <div className="flex justify-center gap-6 pt-2">
+            <div className="text-center">
+              <div className="text-xl font-bold text-primary">12.5x</div>
+              <p className="text-xs opacity-70 mt-1">more digital interruptions than 10 years ago</p>
+            </div>
+            <div className="text-center">
+              <div className="text-xl font-bold text-primary">37%</div>
+              <p className="text-xs opacity-70 mt-1">of knowledge workers never experience flow state</p>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <a href="/focus" className="btn btn-primary">
+              Try the Focus Solution Now
+            </a>
+          </div>
         </div>
       </div>
     </section>
